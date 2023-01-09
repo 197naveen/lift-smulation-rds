@@ -1,6 +1,44 @@
-form > input {
-    margin: 5px 0px ;
+/* body {
+    background-color: black;
+    color: white;
+} */
+
+* {
+    box-sizing: border-box;
 }
-form {
-    text-align: center;
+
+input, button {
+    margin: 5px 0px ;
+    width: 100%;
+}
+
+
+
+#details {
+    border: 1px solid green;
+    max-width: 14rem;
+    padding: 1.5rem;
+}
+
+#lift-gen > div {
+    border-bottom: 1px solid black;
+}
+
+
+.bn1 {
+    background-color: lightpink;
+}
+
+.bn2 {
+    background-color: lightgreen;
+}
+
+.bn1, .bn2 {
+    width: auto;
+    margin: 1rem;
+
+}
+
+.divcon {
+    border-bottom: 1px solid black;
 }

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -8,17 +9,59 @@
     <script src="./script.js"></script>
     <title>Lift simulation project</title>
 </head>
+
 <body>
-    <section>
-        <form id="form" onsubmit="myfunc()">
-            <label for="no-of-floors">No of Floors:</label>
-            <input type="number" id="no-of-floors" required /> <br>
-            <label for="no-of-lifts">No of Lifts:</label>
-            <input type="number" id="no-of-lifts" required /> <br>
-            <input type="submit">
-        </form>
-        <div id="ne">hello</div>
+
+    <div id="details">
+        <form action=""></form>
+        <input type="number" id="no-of-floors" required placeholder="Enter the No of Floors" min="0" /> <br>
+        <input type="number" id="no-of-lifts" required placeholder="Enter the No of Lifts" min="0" /> <br>
+        <button onclick="myfunc()">Submit</button>
+    </div>
+    <section id="lift-gen">
     </section>
-    
+    <script>
+        function myfunc() {
+
+            let noOfFloors = document.getElementById("no-of-floors").value;
+            let noOfLifts = document.getElementById("no-of-lifts").value;
+            let i = noOfFloors - 1;
+            
+            while (i >= 0) {
+                
+                //creating parent container
+                let levelContainer = document.createElement("div");
+                levelContainer.innerHTML = "hello world " + i;
+                levelContainer.setAttribute("id", "container" + i);
+                document.body.appendChild(levelContainer);
+
+                //creating button "up" element inside div container 
+                let divContainer1 = document.getElementById("container" + i);
+                let buttonElement1 = document.createElement("BUTTON");
+
+                divContainer1.setAttribute("class","divcon");
+                buttonElement1.innerHTML = "UP";
+                divContainer1.appendChild(buttonElement1);
+
+                //creating button "down" element inside div container 
+                let divContainer2 = document.getElementById("container" + i);
+                let buttonElement2 = document.createElement("BUTTON");
+                buttonElement2.innerHTML = "DOWN";
+                divContainer2.appendChild(buttonElement2);
+
+
+                buttonElement1.setAttribute("class", "bn1");
+                buttonElement2.setAttribute("class", "bn2");
+
+                // let bnColor = document.getElementsByClassName("bn1");
+                // bnColor["i"].style.backgroundColor = "red";
+                
+
+                i--;
+
+            }
+        }
+    </script>
 </body>
+
 </html>
