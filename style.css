@@ -7,17 +7,22 @@
     box-sizing: border-box;
 }
 
-input, button {
-    margin: 5px 0px ;
+input {
+    margin-bottom: 10px;
     width: 100%;
+    padding: 4px;
 }
 
-
+#details > button {
+    width: 100%;
+}
 
 #details {
     border: 1px solid green;
     max-width: 14rem;
-    padding: 1.5rem;
+    padding: 1rem;
+    position: relative;
+    margin: 0rem auto;
 }
 
 #lift-gen > div {
@@ -35,10 +40,19 @@ input, button {
 
 .bn1, .bn2 {
     width: auto;
-    margin: 1rem;
+    padding: 0.2rem 0.4rem;
+    margin-top: 0.5rem;
 
 }
 
 .divcon {
     border-bottom: 1px solid black;
+    padding: 0.5rem 0rem;
 }
+
+#liftcont {
+    height: 100px;
+    width: 100px;
+    background-color: red;
+}
+

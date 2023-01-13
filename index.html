@@ -13,13 +13,15 @@
 <body>
 
     <div id="details">
-        <form action=""></form>
-        <input type="number" id="no-of-floors" required placeholder="Enter the No of Floors" min="0" /> <br>
-        <input type="number" id="no-of-lifts" required placeholder="Enter the No of Lifts" min="0" /> <br>
+        <!-- <form action=""></form> -->
+        <input type="number" id="no-of-floors" required placeholder="Enter the No of Floors" min="1" /> <br>
+        <input type="number" id="no-of-lifts" required placeholder="Enter the No of Lifts" min="1" max="3" /> <br>
         <button onclick="myfunc()">Submit</button>
     </div>
-    <section id="lift-gen">
-    </section>
+    <!-- <div id="liftcont">
+        <div id="doorbg"></div>
+        <div id="doorfront1"></div>
+    </div> -->
     <script>
         function myfunc() {
 
@@ -30,37 +32,46 @@
             while (i >= 0) {
                 
                 //creating parent container
+                let floorContainer = document.createElement("div");
+                floorContainer.setAttribute("id", "container" + i);
+                document.body.appendChild(floorContainer);
+                floorContainer.setAttribute("class","divcon");
+
+                //calling parent container
+                let parentContainer = document.getElementById("container" + i);
+
+                //creating level text container
                 let levelContainer = document.createElement("div");
-                levelContainer.innerHTML = "hello world " + i;
-                levelContainer.setAttribute("id", "container" + i);
-                document.body.appendChild(levelContainer);
+                levelContainer.innerHTML = "Level " + i;
+                parentContainer.appendChild(levelContainer);
+                levelContainer.setAttribute("class", "floor-level");
 
                 //creating button "up" element inside div container 
-                let divContainer1 = document.getElementById("container" + i);
                 let buttonElement1 = document.createElement("BUTTON");
-
-                divContainer1.setAttribute("class","divcon");
                 buttonElement1.innerHTML = "UP";
-                divContainer1.appendChild(buttonElement1);
+                parentContainer.appendChild(buttonElement1);
+                buttonElement1.setAttribute("class", "bn1");
+
+                //creating br element
+                let brkElement = document.createElement("br");
+                parentContainer.appendChild(brkElement);
 
                 //creating button "down" element inside div container 
-                let divContainer2 = document.getElementById("container" + i);
                 let buttonElement2 = document.createElement("BUTTON");
                 buttonElement2.innerHTML = "DOWN";
-                divContainer2.appendChild(buttonElement2);
-
-
-                buttonElement1.setAttribute("class", "bn1");
+                parentContainer.appendChild(buttonElement2);
                 buttonElement2.setAttribute("class", "bn2");
 
                 // let bnColor = document.getElementsByClassName("bn1");
                 // bnColor["i"].style.backgroundColor = "red";
-                
 
                 i--;
 
+                
+
             }
         }
+
     </script>
 </body>
 
