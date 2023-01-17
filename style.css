@@ -1,58 +1,85 @@
-/* body {
-    background-color: black;
-    color: white;
-} */
-
 * {
     box-sizing: border-box;
 }
 
-input {
-    margin-bottom: 10px;
-    width: 100%;
+form>input {
+    width: 70%;
     padding: 4px;
+    margin-bottom: 1rem;
 }
 
-#details > button {
-    width: 100%;
+form {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+
 }
 
-#details {
-    border: 1px solid green;
-    max-width: 14rem;
+form>button {
+    width: 70%;
+    padding: 2px;
+}
+
+
+#outer-div {
     padding: 1rem;
+}
+
+.floor-div {
+    border-bottom: 1px solid black;
+    display: flex;
+    align-items: center;
+}
+
+.up-down-btn {
+    margin-bottom: 1rem;
+}
+
+.lift {
+    height: 6.5rem;
+    width: 5rem;
+    background-color: brown;
+    justify-self: center;
+    margin-left: 1rem;
     position: relative;
-    margin: 0rem auto;
 }
 
-#lift-gen > div {
-    border-bottom: 1px solid black;
+.floor-div {
+    position: relative;
 }
 
-
-.bn1 {
-    background-color: lightpink;
+.lift-div {
+    display: flex;
+    position: absolute;
+    left: 100px;
+    top: 10px;
 }
 
-.bn2 {
-    background-color: lightgreen;
+@media screen and (max-width:376px) {
+
+    .lift {
+        width: 4rem;
+        height: 6rem;
+    }
+
+    form {
+        width: auto;
+        display: flex;
+        flex-direction: column;
+        justify-content: stretch;
+        align-items: center;
+    }
+
 }
 
-.bn1, .bn2 {
-    width: auto;
-    padding: 0.2rem 0.4rem;
-    margin-top: 0.5rem;
-
+@media screen and (min-width:375px) {
+    form>input {
+        width: 14.5rem;
+    }
+    form>button {
+        width: 14.5rem;
+        padding: 2px;
+    }
+    
 }
-
-.divcon {
-    border-bottom: 1px solid black;
-    padding: 0.5rem 0rem;
-}
-
-#liftcont {
-    height: 100px;
-    width: 100px;
-    background-color: red;
-}
-

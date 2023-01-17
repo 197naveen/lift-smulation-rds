@@ -6,73 +6,119 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./style.css">
-    <script src="./script.js"></script>
+    <!-- <script src="./script.js"></script> -->
     <title>Lift simulation project</title>
 </head>
 
 <body>
 
-    <div id="details">
-        <!-- <form action=""></form> -->
-        <input type="number" id="no-of-floors" required placeholder="Enter the No of Floors" min="1" /> <br>
-        <input type="number" id="no-of-lifts" required placeholder="Enter the No of Lifts" min="1" max="3" /> <br>
-        <button onclick="myfunc()">Submit</button>
-    </div>
-    <!-- <div id="liftcont">
-        <div id="doorbg"></div>
-        <div id="doorfront1"></div>
-    </div> -->
+
+    <form>
+        <input type="number" id="floors" name="no-of-floors" placeholder="Enter the No of Floors" min="1" max="8"
+            required />
+        <input type="number" id="lifts" name="no-of-lifts" placeholder="Enter the No of Lifts" min="1" max="4"
+            required />
+        <button type="submit">Submit</button>
+    </form>
+
+    <div id="outer-div"></div>
     <script>
-        function myfunc() {
 
-            let noOfFloors = document.getElementById("no-of-floors").value;
-            let noOfLifts = document.getElementById("no-of-lifts").value;
-            let i = noOfFloors - 1;
-            
+        const form = document.querySelector('form');
+
+        const floorInput = document.getElementById("floors");
+        const liftInput = document.getElementById("lifts");
+        const outerdiv = document.getElementById("outer-div");
+        form.addEventListener('submit', (e) => {
+            e.preventDefault()
+            outerdiv.innerHTML = " ";
+            lifgen(floorInput.value, liftInput.value);
+            floorInput.value = "";
+            liftInput.value = "";
+        })
+
+
+        function lifgen(floors, lifts) {
+
+            let i = floors - 1;
+            let c = 0;
+
             while (i >= 0) {
-                
-                //creating parent container
-                let floorContainer = document.createElement("div");
-                floorContainer.setAttribute("id", "container" + i);
-                document.body.appendChild(floorContainer);
-                floorContainer.setAttribute("class","divcon");
 
-                //calling parent container
-                let parentContainer = document.getElementById("container" + i);
+                //creating floor container
+                const floorCont = document.createElement("div");
+                floorCont.setAttribute("id", "floor-" + i);
+                floorCont.setAttribute("class", "floor-div");
+                document.getElementById("outer-div").appendChild(floorCont);
 
-                //creating level text container
-                let levelContainer = document.createElement("div");
-                levelContainer.innerHTML = "Level " + i;
-                parentContainer.appendChild(levelContainer);
-                levelContainer.setAttribute("class", "floor-level");
+                //creating button container to hold up & down button.
+                const buttonCont = document.createElement("div");
+                buttonCont.setAttribute("id", "btn-div-" + i)
+                buttonCont.setAttribute("class", "btn-div");
+                document.getElementById("floor-" + i).appendChild(buttonCont);
 
-                //creating button "up" element inside div container 
-                let buttonElement1 = document.createElement("BUTTON");
-                buttonElement1.innerHTML = "UP";
-                parentContainer.appendChild(buttonElement1);
-                buttonElement1.setAttribute("class", "bn1");
+                //creating lift container inside floor container
+                const liftCont = document.createElement("div");
+                liftCont.setAttribute("id", "lift-div-" + i);
+                liftCont.setAttribute("class", "lift-div");
+                document.getElementById("floor-" + i).appendChild(liftCont);
+
+                //creating floor level name inside the button-div container
+                const levelElement = document.createElement("p");
+                levelElement.innerHTML = "Level-" + i;
+                document.getElementById("btn-div-" + i).appendChild(levelElement);
+
+                //creating up button
+                const upButton = document.createElement("BUTTON");
+                upButton.innerHTML = "Up";
+                upButton.setAttribute("id", "up" + i);
+                upButton.setAttribute("class", "up-down-btn");
+                document.getElementById("btn-div-" + i).appendChild(upButton);
 
                 //creating br element
-                let brkElement = document.createElement("br");
-                parentContainer.appendChild(brkElement);
+                const brkElement = document.createElement("br");
+                document.getElementById("btn-div-" + i).appendChild(brkElement);
 
-                //creating button "down" element inside div container 
-                let buttonElement2 = document.createElement("BUTTON");
-                buttonElement2.innerHTML = "DOWN";
-                parentContainer.appendChild(buttonElement2);
-                buttonElement2.setAttribute("class", "bn2");
-
-                // let bnColor = document.getElementsByClassName("bn1");
-                // bnColor["i"].style.backgroundColor = "red";
+                //creating down button
+                const downButton = document.createElement("BUTTON");
+                downButton.innerHTML = "Down";
+                downButton.setAttribute("class", "up-down-btn");
+                document.getElementById("btn-div-" + i).appendChild(downButton);
 
                 i--;
 
-                
-
             }
+
+            while (c < lifts) {
+
+                const a = document.getElementById("lift-div-0");
+                const b = document.createElement("div")
+                b.setAttribute("id", c)
+                b.setAttribute("class", "lift");
+                a.appendChild(b);
+                c++;
+            }
+
         }
 
+        const upDownBtn = document.getElementById("up1");
+        const newel = document.getElementById("lift-div-1");
+
+
+        upDownBtn.addEventListener("click", liftMove);
+        function liftMove() {
+            // e.preventDefault()
+            newel.innerHTML = "hello world !";
+        }
+
+
     </script>
+    <!-- 
+        ref links:
+        https://javascript.plainenglish.io/how-to-get-html-form-values-with-javascript-b4869bc5e889
+        creating form outputs after submission
+        https://stackoverflow.com/questions/14589193/clearing-my-form-inputs-after-submission
+     -->
 </body>
 
 </html>
